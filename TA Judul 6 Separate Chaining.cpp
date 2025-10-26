@@ -10,7 +10,6 @@ struct Node {
     Node* next;
 };
 
-// Fungsi hash sederhana
 int hashFunction(const string& nim) {
     int sum = 0;
     for (char c : nim)
@@ -18,13 +17,11 @@ int hashFunction(const string& nim) {
     return sum % SIZE;
 }
 
-// Inisialisasi tabel hash
 void initTable(Node* table[]) {
     for (int i = 0; i < SIZE; i++)
         table[i] = nullptr;
 }
 
-// Tambah data mahasiswa
 void insert(Node* table[], const string& nim, const string& nama) {
     int index = hashFunction(nim);
     Node* newNode = new Node{nim, nama, table[index]};
@@ -32,7 +29,6 @@ void insert(Node* table[], const string& nim, const string& nama) {
     cout << "Data mahasiswa berhasil ditambahkan.\n";
 }
 
-// Cari data mahasiswa
 void search(Node* table[], const string& nim) {
     int index = hashFunction(nim);
     Node* cur = table[index];
@@ -48,7 +44,6 @@ void search(Node* table[], const string& nim) {
     cout << "Data dengan NIM " << nim << " tidak ditemukan.\n";
 }
 
-// Hapus data mahasiswa
 void removeData(Node* table[], const string& nim) {
     int index = hashFunction(nim);
     Node *cur = table[index], *prev = nullptr;
@@ -68,7 +63,6 @@ void removeData(Node* table[], const string& nim) {
     cout << "Data dengan NIM " << nim << " tidak ditemukan.\n";
 }
 
-// Tampilkan semua data dalam tabel
 void display(Node* table[]) {
     cout << "\n=== Daftar Data Mahasiswa ===\n";
     for (int i = 0; i < SIZE; i++) {
@@ -135,4 +129,3 @@ int main() {
     } while (pilihan != 5);
 
     return 0;
-}
